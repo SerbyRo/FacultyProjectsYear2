@@ -1,0 +1,22 @@
+(defun elim (l niv)
+(cond
+( (AND (atom l) (equal (mod niv 2) 0))
+(list l)
+)
+( (AND (atom l) (equal (mod niv 2) 1))
+NIL
+)
+(T (mapcan #'(lambda (x)
+( elim x (+ niv 1)
+)
+)
+l
+)
+)
+)
+)
+; main(l) = elim(l,-1)
+; main(l:list)
+(defun main(l)
+(elim l -1)
+)

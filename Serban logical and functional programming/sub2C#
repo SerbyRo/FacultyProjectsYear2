@@ -1,0 +1,7 @@
+take([E],E,[]).
+
+
+perms([],[]).
+perms([H|L],LO1):-
+      perms(L,LO)
+      

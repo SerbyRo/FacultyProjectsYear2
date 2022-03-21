@@ -1,0 +1,21 @@
+(defun modificare(arbore)
+	(cond 
+	   ((NULL arbore) NIL)
+	   ((= (CADR arbore) 0) (cons (CAR arbore) NIL))
+	   ((= (CADR arbore) 1) (list (CAR arbore) (modificare (getleft arbore))))
+	   ((= (CADR arbore) 2) (list (CAR arbore) (modificare (getleft arbore)) (modificare(getright arbore))))
+	)
+)
+(defun getleft(arbore)
+	(CDDR arbore)
+)
+(defun getright(arbore)
+	(getrightparcurgere (CDDR arbore) 1)
+)
+
+(defun getrightparcurgere (arbore numar)
+	(cond 
+		((= numar 0) arbore)
+		(T (getrightparcurgere (CDDR arbore) (+ numar (CADR arbore) -1)))
+	)
+)
